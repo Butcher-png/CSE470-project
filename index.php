@@ -1,183 +1,150 @@
+<!--connect to database-->
+
 <?php
-include('config/dbconn.php');
+include('./Connectors/connect.php');
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title> Emart </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
-    <link href="assets/css/demo.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet"/>
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"/>
-    
-    <link href="assets/style.css" rel="stylesheet"/>
+  <!--bootstarp CSS link-->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecommerce Website Using PHP and mySQL</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!--font link-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
-<body class="index-page sidebar-collapse">
+<body>
 
-    <nav class = "navbar navbar-expand navbar-fixed-top" role = "navigation" style="background: black;">
-        <div class="container">
-            <div class="navbar-translate">
-                <a class="navbar-brand" rel="tooltip" title="" data-placement="bottom" target="">
-                <h1><b>Emart</b></h1>
-                </a>
-                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                    <span class="navbar-toggler-bar bar4"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="pages/user_login_page.php" class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
-                            <p>Login</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/user_signup.php" class="nav-link" onclick="scrollToDownload()">
-                            <p>Sign up</p>
-                        </a>
-                    </li>
-					
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/products.php">
-                            <p>Our Products</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                    </li>
-                </ul>
-            </div>
+  <!--navigation-bar-->
+  <div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <a class="navbar-brand" href="#">
+        <h3>Emart</h3>
+      </a>
+      <div class="container-fluid">
+        <img src="./images/logo.png" alt="" class="logo">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup>1</sup></a>
+            </li>
+
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 
-    <div class="wrapper">
-        <div class="page-header clear-filter" filter-color="transparent">
-            <div class="page-header-image" data-parallax="False" style="background-image: url('./assets/img/When-Is-The-Best-Time-To-Buy-Computer-Parts.jpg');">
-            
-                <div class="container">
-                    
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="main">
-            <div class="section section-basic">
-                <div class="container">
-                    <br>
-                    <div class="col-md-12">
-                        <h2 class="title">All of Our Products</h2>
-                        <br>
-                        <label><b>Search Product: &nbsp</b></label>       
-                                <form method="POST" action="index_search.php" >
-                                    <input type="text" name="search" class="search-query" placeholder="Product name">
-                                </form>
-                        
-                    </div>
-                    <br><hr color="black">
 
-  <div class="tab-pane  active" id="">
-    <ul class="thumbnails">
-    <?php
-    $query = "SELECT * FROM products ORDER BY prod_name ASC";
-    $result = mysqli_query($dbconn,$query);
-    while($res = mysqli_fetch_array($result)) {  
-        $prod_id=$res['prod_id'];
-    
-?>   
-    <div class="row-sm-3">
-        <div class="thumbnail">
-            <?php if($res['prod_pic1'] != ""): ?>
-            <img src="uploads/<?php echo $res['prod_pic1']; ?>" width="300px" height="200px">
-            <?php else: ?>
-            <img src="uploads/default.png" width="300px" height="200px">
-            <?php endif; ?>
-        <div class="caption">
-          <h5><?php echo $res['prod_name'];?></h5>
-          <h6><a class="btn btn-primary " title="" href="pages/product_details.php?prod_id=<?php echo $res['prod_id'];?>">View</a><medium class="pull-right">Price: <?php echo $res['prod_price']; ?></medium></h6>
-        </div>
+    <nav class="navbar navbar-expand-1g navbar-dark bg-secondary">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
 
-        </div>
-      <hr color="orange">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+    </nav>
+
+
+    <div class="row">
+      <div class="col-md-2 bg-secondary p-0">
+        <!--categories-->
+        <ul class="navbar-nav me-auto text-center">
+          <li class="nav-item bg info">
+            <a href="#" class="nav-link text-info">
+              <h4>Categories</h4>
+            </a>
+          </li>
+          <?php
+          $select_categories = "Select * from categories";
+          $result_categories = mysqli_query($con, $select_categories);
+
+          while ($row_data = mysqli_fetch_assoc($result_categories)) {
+            $category_title = $row_data['category_title'];
+            $category_id = $row_data['category_id'];
+            echo "<li class='nav-item'><a href='index.php?$category_title=$category_id' class='nav-link text-light'>$category_title</a></li>";
+          }
+          ?>
+        </ul>
+
       </div>
-             
-<?php }?> 
+      <div class="col-md-10">
+        <!--products-->
+        <div class="row">
 
-      </ul>
+          <!--fetching Products-->
 
+          <?php
+
+          $select_query = "select * from products order by product_price";
+          $result_query = mysqli_query($con, $select_query);
+
+
+          while ($row = mysqli_fetch_assoc($result_query)) {
+            $product_id = $row['product_id'];
+            $product_title = $row['product_title'];
+            $product_description = $row['product_description'];
+            $product_image = $row['product_image'];
+            $product_price = $row['product_price'];
+            $category_id = $row['category_id'];
+            echo "<div class='col-md-4 mb-2'>
+  <div class='card'>
+              <img src='./admin/product_images/$product_image' 
+              class='card-img-top' alt='$product_title'>
+              <div class='card-body'>
+                 <h5 class='card-title'>$product_title</h5> <p class='card-text'>$product_description</p>
+                 <h5> Price: $product_price</h5>
+                 <a href='#' class='btn btn-info'>Add to cart</a>
+                 <a href='#' class='btn btn-secondary '>View more</a>
+                 
+              </div>
+
+
+
+
+       </div>
+    </div>";
+
+          }
+          ?>
+
+
+          <!--bootstarp JS link-->
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
 </body>
-<script src="./assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
-<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-<script src="./assets/js/plugins/bootstrap-switch.js"></script>
-<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-<script src="./assets/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        nowuiKit.initSliders();
-    });
 
-    function scrollToDownload() {
-
-        if ($('.section-download').length != 0) {
-            $("html, body").animate({
-                scrollTop: $('.section-download').offset().top
-            }, 1000);
-        }
-    }
-</script>
-
-    <script src="./plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="./plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script src="assets/js/application.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/bootstrap-affix.js"></script>
-    <script src="assets/js/jquery.lightbox-0.5.js"></script>
-    <script src="assets/js/bootsshoptgl.js"></script>
-     <script type="text/javascript">
-    $(function() {
-        $('#gallery a').lightBox();
-    });
-    </script>
-
-    <script src="./plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <script src="./plugins/fastclick/fastclick.min.js"></script>
-    <script src="./plugins/app.min.js"></script>
-    <script src="./plugins/demo.js"></script>
-    <script src="./plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="./plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script>
-      $(function () {
-        $("#example1").DataTable({
-        });
-      });
-    </script>
 </html>
